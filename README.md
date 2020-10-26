@@ -6,3 +6,6 @@ Includes the following protoc plugins:
  - github.com/golang/protobuf/protoc-gen-go
  - github.com/micro/micro/v2/cmd/protoc-gen-micro
  - github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+
+# Docker Hub
+<https://hub.docker.com/repository/docker/sharescape/golang-protoc-base-docker>
