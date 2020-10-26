@@ -1,6 +1,10 @@
 # Go Base Image with proto3
 Docker imaged based on `golang:1.13-alpine` with protobuf tooling installed.
 
+```sh
+docker pull sharescape/golang-protoc-base-docker
+```
+
 Includes the following protoc plugins: 
  - github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
  - github.com/golang/protobuf/protoc-gen-go
