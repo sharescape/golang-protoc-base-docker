@@ -5,6 +5,11 @@ Docker imaged based on `golang:1.13-alpine` with protobuf tooling installed.
 docker pull sharescape/golang-protoc-base-docker
 ```
 
+This can be used as a base image for container's using: 
+ - https://github.com/micro/micro
+ - https://github.com/grpc-ecosystem/grpc-gateway
+ - Vanilla gRPC
+
 Includes the following protoc plugins: 
  - github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
  - github.com/golang/protobuf/protoc-gen-go
