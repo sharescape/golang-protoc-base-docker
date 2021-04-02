@@ -9,9 +9,14 @@ build:
 	docker push sharescape/golang-protoc-base-docker:manifest-arm32v7
 	\
 	docker manifest create \
-	sharescape/golang-protoc-base-docker:manifest-latest \
+	sharescape/golang-protoc-base-docker:latest \
 	--amend sharescape/golang-protoc-base-docker:manifest-amd64 \
 	--amend sharescape/golang-protoc-base-docker:manifest-arm32v7 \
 	--amend sharescape/golang-protoc-base-docker:manifest-arm64v8
 	\
-	docker push sharescape/golang-protoc-base-docker:manifest-latest
+	docker manifest push sharescape/golang-protoc-base-docker:latest
+
+buildx:
+	docker buildx build \
+		--tag sharescape/golang-protoc-base-docker:latest \
+		--platform linux/amd64,linux/arm/v7,linux/arm64 .
