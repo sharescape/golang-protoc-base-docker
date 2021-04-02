@@ -1,4 +1,5 @@
-FROM golang:1.15-alpine as base
+ARG ARCH=
+FROM ${ARCH}golang:1.15-alpine as base
 LABEL maintainer="Christian Nieves <c.nieves@marrickdevelopment.com>"
 WORKDIR /app
 
@@ -9,7 +10,8 @@ RUN apk update && apk add git protobuf protobuf-dev protoc make
 RUN GO111MODULE="on" go get -u \
     github.com/golang/protobuf/protoc-gen-go \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
-    github.com/micro/micro/v2/cmd/protoc-gen-micro
+    github.com/micro/micro/v2/cmd/protoc-gen-micro \
+    github.com/uber/prototool/cmd/prototool@dev
 
 #RUN GO111MODULE="on" go install \
     #github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
