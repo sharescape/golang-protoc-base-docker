@@ -9,7 +9,7 @@ RUN apk update && apk add git protobuf protobuf-dev protoc make
 RUN GO111MODULE="on" go get -u \
     github.com/golang/protobuf/protoc-gen-go \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
-    github.com/micro/micro/v2/cmd/protoc-gen-micro
+    github.com/asim/go-micro/cmd/protoc-gen-micro/v3
 
 #RUN GO111MODULE="on" go install \
     #github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
