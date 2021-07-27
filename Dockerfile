@@ -11,6 +11,6 @@ RUN GO111MODULE="on" go get -u \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
     github.com/asim/go-micro/cmd/protoc-gen-micro/v3
 
-#RUN GO111MODULE="on" go install \
-    #github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
-    #github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+RUN GO111MODULE="on" go install \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
