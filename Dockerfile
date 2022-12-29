@@ -1,17 +1,16 @@
-FROM golang:1.15-alpine as base
-LABEL maintainer="Christian Nieves <c.nieves@marrickdevelopment.com>"
+ARG ARCH=
+FROM ${ARCH}golang:1.19-alpine as base
+LABEL maintainer="Omar Martinez <o.martinez@marrickdevelopment.com>"
 WORKDIR /app
 
 # system setup
 RUN apk update && apk add git protobuf protobuf-dev protoc make
 
-# intall protoc-gen-{go,swagger,gateway,micro}
-RUN GO111MODULE="on" go get -u \
-    github.com/golang/protobuf/protoc-gen-go \
-    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
-    github.com/asim/go-micro/cmd/protoc-gen-micro/v3
-
-RUN GO111MODULE="on" go get \
-    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
-    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
-    
+COPY . .
+RUN go mod tidy
+RUN go install \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway \
+    github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2 \
+    github.com/asim/go-micro/cmd/protoc-gen-micro/v3 \
+    google.golang.org/protobuf/cmd/protoc-gen-go \
+    google.golang.org/grpc/cmd/protoc-gen-go-grpc
